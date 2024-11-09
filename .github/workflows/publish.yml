@@ -29,10 +29,9 @@ jobs:
       - name: Prepare Files
         shell: bash
         run: |
-          bash -O extglob
-          rm -- !(./src)
-          mv ./src/* ./
-          rmdir ./src
+          mv ./src /tmp/src
+          rm -r *
+          mv /tmp/src/* ./*
       - name: Commit Changes
         shell: bash
         run: git commit -m "Automated publish"
