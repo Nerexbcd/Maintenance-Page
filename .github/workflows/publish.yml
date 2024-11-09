@@ -34,7 +34,7 @@ jobs:
           mv /tmp/src/* ./
       - name: Commit Changes
         shell: bash
-        run: git commit -m "Automated publish"
+        run: git commit -a -m "Automated publish"
       
       - name: Push the build output to github pages
         shell: bash
