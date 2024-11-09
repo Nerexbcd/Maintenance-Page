@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    -ms-overflow-style: none; 
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+.color-scheme-dark {
+    color-scheme: dark;
+}
+
+
+@layer base{
+    .input, [type='text'], [type='email'], [type='url'], [type='password'], [type='number'], [type='date'], [type='datetime-local'], [type='month'], [type='search'], [type='tel'], [type='time'], [type='week'], [multiple], textarea, select {
+        background-color: #424343 !important;
+        border-color: #696968;
+    }
+}
+
+.like-input {
+    background-color: #424343 !important;
+    border-color: #696968;
+}
+
+.form-error {
+    border-color: rgb(240 82 82) !important;
+}
