@@ -37,7 +37,6 @@ jobs:
           build_dir: build
           author: Nerexbcd <me@nerexbcd.dev>
           committer: Nerexbcd <me@nerexbcd.dev>
-          keep_history: true
           commit_message: Publish Page
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
