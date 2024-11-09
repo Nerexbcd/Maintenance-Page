@@ -10,19 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out
-        # You may use a newer version of https://github.com/actions/checkout
         uses: actions/checkout@v4
 
-      - name: Setup Environment
-        shell: bash
-        run: |
-          git branch -f published HEAD
-          git checkout published
-          git config user.name "Publisher"
-          git config user.email "publisher@users.noreply.github.com"
-          git commit --amend -m "This commit will be automatically published"
-          bash -O dotglob
-          
       - name: Save Date
         shell: bash
         run: date > ./publish_date.txt
@@ -30,27 +19,25 @@ jobs:
       - name: Prepare Files
         shell: bash
         run: |
-          mv ./src /tmp/src
-          rm -r *
-          mv /tmp/src/* ./
-      - name: Commit Changes
-        shell: bash
-        run: |
-          git add .
-          git commit -m "Automated publish"
-      
-      - name: Push the build output to github pages
-        shell: bash
-        run: git push -f origin HEAD:refs/heads/published
-        ##if: ${{ inputs.source-directory == '.' }}
-        # Astonishedly, the "if" command does not work in an action shipped to marketplace,
-        # so that there is even a 3rd-party github action to do that
-        # (https://github.com/marketplace/actions/conditional-value-for-github-action)
-        # But that seems like an overkill. So, we'd use "if" in bash instead.
-        #run: >  # https://yaml-multiline.info/
-        #  if [ "${{ inputs.source-directory }}" == "." ]; then
-        #    git push -f origin HEAD:refs/heads/${{ inputs.target-branch }}
-        #  else
-        #    # Inspired from https://gist.github.com/cobyism/4730490#gistcomment-1374989
-        #    git push -f origin `git subtree split -P ${{ inputs.source-directory }}`:refs/heads/${{ inputs.target-branch }}
-        #  fi
+          mv ./src ./build
+          mv ./CNAME ./build/CNAME
+
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v6
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+
+      - name: Commit / Push Changes
+        uses: crazy-max/ghaction-github-pages@v4.1.0
+        with:
+          target_branch: published
+          build_dir: build
+          author: Nerexbcd <me@nerexbcd.dev>
+          committer: Nerexbcd <me@nerexbcd.dev>
+          keep_history: true
+          commit_message: Publish Page
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
