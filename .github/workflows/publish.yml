@@ -31,7 +31,7 @@ jobs:
         run: |
           mv ./src /tmp/src
           rm -r *
-          mv /tmp/src/* ./*
+          mv /tmp/src/* ./
       - name: Commit Changes
         shell: bash
         run: git commit -m "Automated publish"
