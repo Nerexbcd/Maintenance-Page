@@ -13,9 +13,30 @@ jobs:
         # You may use a newer version of https://github.com/actions/checkout
         uses: actions/checkout@v4
 
-      - name: Publish current workdir (which contains generated content) to GitHub Pages
-        uses: rayluo/github-pages-overwriter@v1.3
+      - name: Setup Environment
+        shell: bash
+        run: |
+          git branch -f published HEAD
+          git checkout published
+          git config user.name "Publisher"
+          git config user.email "publisher@users.noreply.github.com"
+          git commit --amend -m "This commit will be automatically published"
+          date > ./src/publish_date.txt
+          git add --force ./src
+          git commit -m "Automated publish"
 
-        with:
-          source-directory: ./src
-          target-branch: published
+      - name: Push the build output to github pages
+        shell: bash
+        run: git push -f origin HEAD:refs/heads/published
+        ##if: ${{ inputs.source-directory == '.' }}
+        # Astonishedly, the "if" command does not work in an action shipped to marketplace,
+        # so that there is even a 3rd-party github action to do that
+        # (https://github.com/marketplace/actions/conditional-value-for-github-action)
+        # But that seems like an overkill. So, we'd use "if" in bash instead.
+        #run: >  # https://yaml-multiline.info/
+        #  if [ "${{ inputs.source-directory }}" == "." ]; then
+        #    git push -f origin HEAD:refs/heads/${{ inputs.target-branch }}
+        #  else
+        #    # Inspired from https://gist.github.com/cobyism/4730490#gistcomment-1374989
+        #    git push -f origin `git subtree split -P ${{ inputs.source-directory }}`:refs/heads/${{ inputs.target-branch }}
+        #  fi
