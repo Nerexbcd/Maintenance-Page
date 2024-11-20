@@ -15,7 +15,7 @@ function setMode(mode) {
         case '404':
             icon = 'search-x'
             text = 'The page you are looking for does not exist! ㅤ'
-            mainText = 'Error 404 - Not Found'
+            mainText = 'Error 404'
             break
         default:
             icon = 'triangle-alert'
@@ -26,6 +26,7 @@ function setMode(mode) {
 
     document.getElementById('icon').setAttribute('data-lucide', icon)
     document.getElementById('mainText').innerText = mainText
+    document.getElementsByTagName('title')[0].innerText = mainText + ' | Nerexbcd'
     var contents = document.getElementsByClassName('bannerText')
     for (var i = 0; i < contents.length; i++) {
         contents[i].innerText = text
