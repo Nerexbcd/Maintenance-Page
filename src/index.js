@@ -6,9 +6,9 @@ function loadSpacers() {
 }
 
 function setContents() {
-    var query = window.location.search
-    console.log(query)
-    var mode = query.split('mode=')[1].split('&')[0]
+    var searchParams = new URLSearchParams(window.location.search);
+
+    var mode = searchParams.has('mode') ? searchParams.get('mode') : 'Default'
 
     var icon, text
     switch (mode) {
