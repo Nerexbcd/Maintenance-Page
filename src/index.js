@@ -15,7 +15,7 @@ function setMode(mode) {
         case '404':
             icon = 'search-x'
             text = 'The page you are looking for does not exist! ㅤ'
-            mainText = 'Error 404'
+            mainText = '404 - Not Found'
             break
         default:
             icon = 'triangle-alert'
