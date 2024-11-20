@@ -5,11 +5,9 @@ function loadSpacers() {
     }
 }
 
-function setContents() {
-    var searchParams = new URLSearchParams(window.location.search);
+function autoMode() { setMode(new URLSearchParams(window.location.search).has('mode') ? searchParams.get('mode') : 'Default' ) }
 
-    var mode = searchParams.has('mode') ? searchParams.get('mode') : 'Default'
-
+function setMode(mode) {
     var icon, text
     switch (mode) {
         case '404':
@@ -22,10 +20,14 @@ function setContents() {
             break
     }
 
-
     document.getElementById('icon').setAttribute('data-lucide', icon)
     var contents = document.getElementsByClassName('bannerText')
     for (var i = 0; i < contents.length; i++) {
         contents[i].innerText = text
     }
+}
+
+function finalizePage() {
+    lucide.createIcons();
+    loadSpacers();
 }
