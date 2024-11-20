@@ -6,7 +6,9 @@ function loadSpacers() {
 }
 
 function setContents() {
-    var mode = window.location.search.split('mode=')[1].split('&')[0]
+    var query = window.location.search
+    console.log(query)
+    var mode = query.split('mode=')[1].split('&')[0]
 
     var icon, text
     switch (mode) {
@@ -21,8 +23,8 @@ function setContents() {
     }
 
 
-    window.getElementById('icon').setAttribute('data-lucide', icon)
-    var contents = window.getElementsByClassName('bannerText')
+    document.getElementById('icon').setAttribute('data-lucide', icon)
+    var contents = document.getElementsByClassName('bannerText')
     for (var i = 0; i < contents.length; i++) {
         contents[i].innerText = text
     }
