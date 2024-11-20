@@ -822,16 +822,6 @@ html {
 }
 
 @media (hover: hover) {
-  .btm-nav > *.disabled:hover,
-      .btm-nav > *[disabled]:hover {
-    pointer-events: none;
-    --tw-border-opacity: 0;
-    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-    --tw-bg-opacity: 0.1;
-    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-    --tw-text-opacity: 0.2;
-  }
-
   .btn:hover {
     --tw-border-opacity: 1;
     border-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-border-opacity)));
@@ -925,24 +915,6 @@ html {
 .link {
   cursor: pointer;
   text-decoration-line: underline;
-}
-
-.menu li.disabled {
-  cursor: not-allowed;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-  color: var(--fallback-bc,oklch(var(--bc)/0.3));
-}
-
-.btm-nav > *.disabled,
-    .btm-nav > *[disabled] {
-  pointer-events: none;
-  --tw-border-opacity: 0;
-  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-  --tw-bg-opacity: 0.1;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-  --tw-text-opacity: 0.2;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -1162,34 +1134,16 @@ html {
   z-index: 10;
 }
 
-.m-auto {
-  margin: auto;
-}
-
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.my-auto {
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
 .flex {
   display: flex;
 }
 
-.hidden {
-  display: none;
+.contents {
+  display: contents;
 }
 
-.h-2\/4 {
-  height: 50%;
-}
-
-.h-full {
-  height: 100%;
+.h-0 {
+  height: 0px;
 }
 
 .h-3\/4 {
@@ -1200,24 +1154,12 @@ html {
   min-height: 100vh;
 }
 
-.w-full {
-  width: 100%;
-}
-
-.w-2\/4 {
-  width: 50%;
-}
-
-.w-16 {
-  width: 4rem;
-}
-
 .w-3\/4 {
   width: 75%;
 }
 
-.flex-1 {
-  flex: 1 1 0%;
+.w-full {
+  width: 100%;
 }
 
 @keyframes infinite-scroll {
@@ -1299,11 +1241,6 @@ html {
   padding-right: 0.5rem;
 }
 
-.py-16 {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -1322,18 +1259,9 @@ html {
   text-align: center;
 }
 
-.align-middle {
-  vertical-align: middle;
-}
-
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
-}
-
-.text-9xl {
-  font-size: 8rem;
-  line-height: 1;
 }
 
 .text-5xl {
@@ -1354,6 +1282,10 @@ html {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-opacity-0 {
+  --tw-text-opacity: 0;
 }
 
 html {
