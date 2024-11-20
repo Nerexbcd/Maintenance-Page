@@ -5,7 +5,9 @@ function loadSpacers() {
     }
 }
 
-function autoMode() { setMode(new URLSearchParams(window.location.search).has('mode') ? searchParams.get('mode') : 'Default' ) }
+function autoMode() { 
+    var searchParams = new URLSearchParams(window.location.search)
+    setMode(searchParams.has('mode') ? searchParams.get('mode') : 'Default' ) }
 
 function setMode(mode) {
     var icon, text
