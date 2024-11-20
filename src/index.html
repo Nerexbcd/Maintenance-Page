@@ -20,16 +20,16 @@
 
       <div class="flex flex-col items-center justify-center gap-4 pb-4">
         <div class="flex flex-col items-center gap-4">
-          <i class="w-3/4 h-3/4" data-lucide="triangle-alert"></i>
+          <i id="icon" class="w-3/4 h-3/4" data-lucide="triangle-alert"></i>
           <h1 class="text-5xl">Failover Page</h1>
         </div>
       </div>
       <div data-nosnippet="">
         <div id="devBanner" class="absolute left-0 flex w-full overflow-hidden bg-red-300 bg-opacity-50">
           <div class="flex w-full py-3 overflow-hidden text-nowrap">
-            <p id="bannerText-1" class="text-3xl animate-infinite-scroll-l">If You are seeing this page, it means the service is Offline or Under Maintenance! ㅤ</p>
-            <p id="bannerText-2" class="text-3xl animate-infinite-scroll-l">If You are seeing this page, it means the service is Offline or Under Maintenance! ㅤ</p>
-            <p id="bannerText-3" class="text-3xl animate-infinite-scroll-l">If You are seeing this page, it means the service is Offline or Under Maintenance! ㅤ</p>
+            <p class="text-3xl animate-infinite-scroll-l bannerText"></p>
+            <p class="text-3xl animate-infinite-scroll-l bannerText"></p>
+            <p class="text-3xl animate-infinite-scroll-l bannerText"></p>
           </div>
         </div>
         <div id="devBanner-Spacer" class="w-full spacer"></div>
@@ -43,5 +43,7 @@
   </footer>
   <script src="https://unpkg.com/lucide@latest" type="text/javascript"></script>
   <script type="text/javascript">lucide.createIcons();</script>
+  <script type="text/javascript">setContents()</script>
   <script type="text/javascript">loadSpacers()</script>
+  
 </body>
