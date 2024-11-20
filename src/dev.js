@@ -10,11 +10,14 @@ if (!window.location.host.includes("nerexbcd.dev")){
     var scripts = document.getElementsByTagName("head")[0].getElementsByTagName("script");
     
     for (var i = 0; i < scripts.length; i++) {
-        var script = document.createElement("script");
-        script.src = scripts[i].src.replace("https://failover.nerexbcd.dev/", "/");
-        script.type = "text/javascript";
-        document.getElementsByTagName("head")[0].removeChild(scripts[i]);
-        document.getElementsByTagName("head")[0].appendChild(script);
+        if (scripts[i].src != "https://failover.nerexbcd.dev/dev.js") {
+            var script = document.createElement("script");
+            script.src = scripts[i].src.replace("https://failover.nerexbcd.dev/", "/");
+            script.type = "text/javascript";
+            document.getElementsByTagName("head")[0].removeChild(scripts[i]);
+            document.getElementsByTagName("head")[0].appendChild(script);
+        }
+
     }
     
     console.log("Dev mode Enabled");
