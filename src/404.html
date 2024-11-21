@@ -19,14 +19,14 @@
   <section class="flex flex-col justify-center min-h-screen px-2 text-white md:px-24 xl:px-40">
 
       <div class="flex flex-col items-center justify-center gap-4 pb-4">
-        <div class="flex flex-col items-center">
-          <i id="icon" class="w-3/4 h-3/4" data-lucide=""></i>
-          <h1 class="h-0 pb-4 text-5xl opacity-0">Service Unavailable</h1>
-          <h1 id="mainText" class="text-5xl"></h1>
+        <div class="relative flex flex-col items-center">
+          <i id="icon" class="w-2/4 h-2/4" data-lucide=""></i>
+          <h1 class="pt-4 text-5xl opacity-0">Service Unavailable</h1>
+          <h1 id="mainText" class="absolute bottom-0 text-5xl text-nowrap"></h1>
         </div>
       </div>
       <div data-nosnippet="">
-        <div id="devBanner" class="absolute left-0 flex w-full overflow-hidden bg-red-300 bg-opacity-50">
+        <div id="devBanner" class="absolute left-0 flex w-full overflow-hidden bg-opacity-50">
           <div class="flex w-full py-3 overflow-hidden text-nowrap">
             <p class="text-3xl animate-infinite-scroll-l bannerText"></p>
             <p class="text-3xl animate-infinite-scroll-l bannerText"></p>
@@ -45,9 +45,6 @@
     <a href="https://github.com/Nerexbcd" target="_blank">Copyright © 2024 Nerexbcd</a>
   </footer>
   <script src="https://unpkg.com/lucide@latest" type="text/javascript"></script>
-  
-  // Mode Line (Auto)
-  <script type="text/javascript">autoMode()</script>
 
   <script type="text/javascript">finalizePage()</script>
   
