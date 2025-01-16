@@ -14,12 +14,21 @@
             }
         },
         {
-            "label": "Deploy tailwindcss for production",
+            "label": "Build tailwindcss for production",
             "type": "shell",
-            "command": "npx tailwindcss -o build.css --minify",
+            "command": "npx tailwindcss -o build.css --minify"
+        },
+        {
+            "label": "Build jekyll",
+            "type": "shell",
+            "command": "bundle exec jekyll build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Build & Watch jekyll (Auto Build)",
+            "type": "shell",
+            "command": "bundle exec jekyll build --watch",
+            "problemMatcher": []
         }
-
-
-        
     ]
 }

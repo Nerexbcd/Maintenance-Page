@@ -1,2 +1,10 @@
 node_modules
 package-lock.json
+
+.sass-cache/
+.jekyll-cache/
+_site/
+gemfiles/
+Gemfile.lock
+gems/
+vendor/
