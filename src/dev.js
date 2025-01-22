@@ -1,6 +1,6 @@
 console.log("Current Host: " + window.location.host);
 
-if (!window.location.host.includes("nerexbcd.dev") && !window.location.host.includes("bc.dawg")) {
+if (!window.location.host.includes("nerexbcd.dev") || !window.location.host.includes("bc.dawg")) {
     var styles = document.getElementsByTagName("head")[0].getElementsByTagName("link");
 
     for (var i = 0; i < styles.length; i++) {
